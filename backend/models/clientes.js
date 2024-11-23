@@ -26,3 +26,5 @@ class Clientes {
         })
     }
 }
+
+module.exports = new Clientes().model;

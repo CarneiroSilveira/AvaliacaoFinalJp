@@ -21,7 +21,7 @@ function authMiddleware(roles = []) {
                 return res.status(401).json({ mensagem: "Token inválido" });
             }
 
-            const clienteLogged = await cliente.findcliente(decoded.id)
+            const clienteLogged = await cliente.findOne(decoded.id)
 
             if (!clienteLogged) {
                 return res.status(404).json({ mensagem: "Cliente não encontrado" });

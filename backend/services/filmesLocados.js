@@ -1,10 +1,8 @@
 const filmeLocado = require("../models/filmesLocados");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 require("dotenv").config()
 
-class clienteService {
+class FilmeLocadoService {
     async createFilmeLocado() {
 
     }
@@ -21,3 +19,5 @@ class clienteService {
         return filmeLocado.findAll();
     }
 }
+
+module.exports = new FilmeLocadoService();

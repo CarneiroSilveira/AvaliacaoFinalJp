@@ -15,7 +15,7 @@ class Filmes {
                 allowNull: false,
                 unique: true
             },
-            classificacaoIndicativa: {
+            faixaEtaria: {
                 type: DataTypes.ENUM("L", "10", "12", "14", "16", "18"),
                 allowNull: false
             },
@@ -27,3 +27,5 @@ class Filmes {
         })
     }
 }
+
+module.exports = new Filmes().model;

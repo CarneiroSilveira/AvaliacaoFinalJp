@@ -36,3 +36,5 @@ class FilmesLocados {
         Cliente.belongsTo(this.model, { foreignKey: 'idCliente' });
     }
 }
+
+module.exports = new FilmesLocados().model;
