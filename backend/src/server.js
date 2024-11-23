@@ -15,7 +15,7 @@ app.use("/api/v1/cliente", ClienteRouter);
 app.use("/api/v1/filme", FilmeRouter);
 
 database.db
-    .sync({ force: true }) // Quando iniciar a fase beta converta para false
+    .sync({ force: true })
     .then((_) => {
         app.listen(3000, (_) => {
             console.log("Server running on port 3000");

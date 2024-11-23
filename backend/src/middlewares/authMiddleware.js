@@ -26,9 +26,6 @@ function authMiddleware(roles = []) {
             if (!clienteLogged) {
                 return res.status(404).json({ mensagem: "Cliente não encontrado" });
             }
-            if (roles.length && !roles.includes(clienteLogged.permissao)) {
-                return res.status(403).json({ mensagem: "Sem permissão" });
-            }
 
             req.session = decoded;
 

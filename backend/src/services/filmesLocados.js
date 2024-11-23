@@ -8,7 +8,7 @@ class FilmeLocadoService {
             throw new Error("idCliente e idFilme são campos obrigatórios.");
         }
 
-        dataLocacao = new Date();
+        const dataLocacao = new Date();
 
         const FilmeLocadoValue = await FilmeLocado.create({
             idFilme,
