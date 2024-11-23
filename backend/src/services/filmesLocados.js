@@ -19,9 +19,12 @@ class FilmeLocadoService {
         return FilmeLocadoValue;
     }
     async DevolverFilme(id, idFilme, idCliente) {
+        if (!id || !idCliente || !idFilme) {
+            throw new Error("idCliente e idFilme são campos obrigatórios.");
+        }
         const oldFilmeLocado = await FilmeLocado.findByPk(id);
         if (oldFilmeLocado.idFilme !== idFilme) {
-            throw new Error("O filme procurado não existe")
+            throw new Error("O filme procurado não foi locado")
         }
         if (oldFilmeLocado.idCliente !== idCliente) {
             throw new Error("Você só pode devolver filmes que foram locados na sua propria conta ")
