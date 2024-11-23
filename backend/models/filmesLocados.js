@@ -16,7 +16,7 @@ class FilmesLocados {
                 type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: false,
                 references: {
-                    model: Clientes,
+                    model: Cliente,
                     key: "id"
                 }
             },
@@ -24,11 +24,22 @@ class FilmesLocados {
                 type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: false,
                 references: {
-                    model: Filmes,
+                    model: Filme,
                     key: "id"
                 }
             },
-        })
+
+            dataLocacao: {
+                type: DataTypes.DATE,
+                allowNull: true
+            },
+
+            dataDevolucao: {
+                type: DataTypes.DATE,
+                allowNull: true
+            }
+
+        }, { updatedAt: false, createdAt: false })
         this.model.hasMany(Filme, { foreignKey: 'idFilme' });
         Filme.belongsTo(this.model, { foreignKey: 'idFilme' });
 

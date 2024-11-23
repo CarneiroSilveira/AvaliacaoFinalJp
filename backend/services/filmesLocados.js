@@ -1,22 +1,32 @@
-const filmeLocado = require("../models/filmesLocados");
+const FilmeLocado = require("../models/filmesLocados");
 
 require("dotenv").config()
 
 class FilmeLocadoService {
-    async createFilmeLocado() {
+    async LocarFilme(idFilme, idCliente) {
+        if (!idCliente || !idFilme) {
+            throw new Error("idCliente e idFilme são campos obrigatórios.");
+        }
 
-    }
-    async update() {
+        dataLocacao = new Date();
 
-    }
-    async delete() {
+        const FilmeLocadoValue = await FilmeLocado.create({
+            idFilme,
+            idCliente,
+            dataLocacao,
+        })
 
+        return FilmeLocadoValue;
     }
-    async findOne() {
+    async DevolverFilme(id) {
+        const oldFilmeLocado = await FilmeLocado.findByPk(id);
+        if (oldFilmeLocado.dataLocacao == !undefined) {
+            throw new Error("Só da pra devolver um filme por vez");
+        }
+        oldFilmeLocado.dataDevolucao = new Date();
+        oldFilmeLocado.save();
 
-    }
-    async findAll() {
-        return filmeLocado.findAll();
+        return oldFilmeLocado;
     }
 }
 
