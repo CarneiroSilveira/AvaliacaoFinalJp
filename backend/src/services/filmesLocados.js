@@ -18,9 +18,16 @@ class FilmeLocadoService {
 
         return FilmeLocadoValue;
     }
-    async DevolverFilme(id) {
+    async DevolverFilme(id, idFilme, idCliente) {
         const oldFilmeLocado = await FilmeLocado.findByPk(id);
-        if (oldFilmeLocado.dataLocacao == !undefined) {
+        if (oldFilmeLocado.idFilme !== idFilme) {
+            throw new Error("O filme procurado não existe")
+        }
+        if (oldFilmeLocado.idCliente !== idCliente) {
+            throw new Error("Você só pode devolver filmes que foram locados na sua propria conta ")
+        }
+        if (oldFilmeLocado.dataLocacao !== null) {
+            console.log(typeof (oldFilmeLocado.dataLocacao))
             throw new Error("Só da pra devolver um filme por vez");
         }
         oldFilmeLocado.dataDevolucao = new Date();

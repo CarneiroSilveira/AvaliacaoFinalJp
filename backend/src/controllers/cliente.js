@@ -45,7 +45,7 @@ class ClienteController {
 
     async findContext(req, res) {
         try {
-            const cliente = await ClienteService.findOne(req?.session?.id || 0)
+            const cliente = await ClienteService.findOne(Number(req?.session?.id) || 0)
             return res.status(200).send(cliente)
         } catch (e) {
             return res.status(400).send({ error: `Erro ao listar usuário ${e.message}` })

@@ -47,7 +47,7 @@ class FilmeController {
         const { id } = req.params.id
 
         try {
-            const filme = await FilmeService.findOne(id)
+            const filme = await FilmeService.findOne(Number(id))
             return res.status(200).send(filme)
         } catch (e) {
             return res.status(400).send({ error: `Erro ao listar filme ${e.message}` })
